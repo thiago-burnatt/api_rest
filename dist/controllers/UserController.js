@@ -37,22 +37,17 @@ class UserController {
   // Update
   async update(req, res) {
     try {
-      if (!req.params.id) {
-        return res.status(400).json({
-          errors: ['Missing ID'],
-        });
-      }
-
-      const user = await _User2.default.findByPk(req.params.id);
+      const user = await _User2.default.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Missing user'],
+          errors: ['Usuário não existe'],
         });
       }
 
       const novosDados = await user.update(req.body);
-      return res.json(novosDados);
+      const { id, nome, email } = novosDados;
+      return res.json({ id, nome, email });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map((err) => err.message),
