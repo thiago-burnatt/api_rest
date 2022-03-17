@@ -16,6 +16,7 @@ import alunoRoutes from './routes/alunoRoutes';
 import fotoRoutes from './routes/fotoRoutes';
 
 const whiteList = [
+  'https://react-application-six.vercel.app',
   'http://15.229.7.150',
   'http://localhost:3001',
   'http://localhost:3000',
